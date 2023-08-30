@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/public/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
   <title>Dev Skills</title>
 </head>
 <body>
-  <h1>Development Skills</h1>
+  <h1>Dev Skills</h1>
   <ul>
-    <% todos.forEach(function(t) { %>
+    <% skills.forEach(function(s) { %>
       <li>
-        <%=  %>
+        <a href="/skills/<%= s.id %>"><%= s.skill %></a>
           - 
-        <%=  ? '' : '' %>
+        <%= s.complete ? 'Experienced but extra pratice always does wonders!' : 'Not yet working on it.' %>
       </li>
     <% }); %>
   </ul>
+  <a href="/">Return Home</a>
 </body>
 </html>
