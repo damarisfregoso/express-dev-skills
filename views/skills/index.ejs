@@ -1,22 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/stylesheets/style.css">
-  <title>Dev Skills</title>
-</head>
-<body>
-  <h1>Dev Skills</h1>
-  <ul>
-    <% skills.forEach(function(s) { %>
-      <li>
-        <a href="/skills/<%= s.id %>"><%= s.skill %></a>
-          - 
-        <%= s.complete ? 'Experienced but extra pratice always does wonders!' : 'Not yet working on it.' %>
-      </li>
+<%- include('../partials/header') %>
+
+<h4>Skills as of <%= date %></h4>
+
+<ul>
+  <% skills.forEach(function(s) { %>
+    <li>
+      <form 
+        action="/skills/<%= s.id %>?_method=DELETE"
+        method="POST"
+        class="delete-form"
+      >
+        <button id="deleteBtn"type="submit">X</button>
+      </form>
+      <a href="/skills/<%= s.id %>"><%= s.skill %></a>
+      - 
+      <%= s.complete ? 'Experienced but extra pratice always does wonders!' : 'Not yet working on it.' %>
+    </li>
     <% }); %>
   </ul>
-  <a href="/">Return Home</a>
-</body>
-</html>
+  <a href="/skills/new">Add a Skill</a>
+  
+  <%- include('../partials/footer') %>
